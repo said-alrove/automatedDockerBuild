@@ -17,7 +17,8 @@ jobs:
 
             -   name: Build and Push Docker Image
                 run: |
-                    IMAGE_NAME=${{secrets.DOCKER_USERNAME}}//apache-php
+                    IMAGE_NAME=${{secrets.DOCKER_USERNAME}}/apache-php
                     docker build --tag $IMAGE_NAME:${{github.sha}} .
-                    echo "Image pushed: $IMAGE_NAME:${}"
+                    docker push $IMAGE_NAME:${{github.sha}}
+                    echo "Image pushed: $IMAGE_NAME:${{github.sha}}"
 
